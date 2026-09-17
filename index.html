@@ -29,11 +29,35 @@
             color: var(--text);
             line-height: 1.6;
             padding: 2rem;
+            position: relative;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        /* Language Toggle Button */
+        .lang-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #fff;
+            border: var(--border);
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
         }
 
         /* Neo-brutalist Card Style */
@@ -44,6 +68,7 @@
             padding: 2rem;
             margin-bottom: 2.5rem;
             transition: all 0.2s ease-in-out;
+            margin-top: 3rem; /* Space for the floating toggle */
         }
 
         .card:hover {
@@ -184,86 +209,89 @@
             h1 { font-size: 2.5rem; }
             .job-header { flex-direction: column; }
             .job-date { margin-top: 0.5rem; }
+            .lang-toggle { top: -1.5rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <button class="lang-toggle" id="btn-lang" onclick="toggleLanguage()">PT-BR</button>
+
     <!-- Header -->
     <header class="card">
         <h1>Gustavo José Elizeta</h1>
-        <h2>Full-Stack Software Engineer</h2>
-        <p class="target-role">Specializing in PowerBuilder & Legacy System Modernization | Open to Relocation (NA/EU)</p>
+        <h2 id="role-title">Full-Stack Software Engineer</h2>
+        <p class="target-role" id="target-role">Specializing in PowerBuilder & Legacy System Modernization | Open to Relocation (NA/EU)</p>
     </header>
 
     <!-- About Section -->
     <section class="card" style="background: var(--tertiary);">
-        <h3>About Me</h3>
-        <p>I am a highly skilled Systems Analyst and Full-Stack Developer with over 5 years of experience building, sustaining, and modernizing robust enterprise applications. My core expertise lies in <strong>PowerBuilder</strong>, complex database architecture (Oracle, Sybase, SQL Anywhere), and system integrations (C++, .NET). I am currently targeting international opportunities where I can leverage my deep knowledge of legacy systems and modern architectural patterns (DDD) to solve critical business challenges.</p>
+        <h3 id="about-title">About Me</h3>
+        <p id="about-desc">I am a highly skilled Systems Analyst and Full-Stack Developer with over 5 years of experience building, sustaining, and modernizing robust enterprise applications. My core expertise lies in <strong>PowerBuilder</strong>, complex database architecture (Oracle, Sybase, SQL Anywhere), and system integrations (C++, .NET). I am currently targeting international opportunities where I can leverage my deep knowledge of legacy systems and modern architectural patterns (DDD) to solve critical business challenges.</p>
     </section>
 
     <!-- Experience Section -->
     <section class="card">
-        <h3>Experience</h3>
+        <h3 id="exp-title">Experience</h3>
         
         <div class="job">
             <div class="job-header">
-                <span class="job-title">Systems Analyst - Mid-Level</span>
+                <span class="job-title" id="job1-title">Systems Analyst - Mid-Level</span>
                 <span class="job-company">Conquest One</span>
-                <span class="job-date">2026 - Present</span>
+                <span class="job-date" id="job1-date">2026 - Present</span>
             </div>
             <ul>
-                <li>Develop and maintain applications using PowerBuilder 2019 within the accounting domain.</li>
-                <li>Ensure the maintenance, sustainability, and evolution of critical legacy systems.</li>
-                <li>Design and implement cross-platform integrations between PowerBuilder and .NET environments.</li>
-                <li>Manage databases using SQL Anywhere 16 and 17.</li>
-                <li>Utilize Git for version control and Microsoft Azure for DevOps workflows.</li>
+                <li id="job1-li1">Develop and maintain applications using PowerBuilder 2019 within the accounting domain.</li>
+                <li id="job1-li2">Ensure the maintenance, sustainability, and evolution of critical legacy systems.</li>
+                <li id="job1-li3">Design and implement cross-platform integrations between PowerBuilder and .NET environments.</li>
+                <li id="job1-li4">Manage databases using SQL Anywhere 16 and 17.</li>
+                <li id="job1-li5">Utilize Git for version control and Microsoft Azure for DevOps workflows.</li>
             </ul>
         </div>
 
         <div class="job">
             <div class="job-header">
-                <span class="job-title">Full-Stack Developer (PowerBuilder)</span>
+                <span class="job-title" id="job2-title">Full-Stack Developer (PowerBuilder)</span>
                 <span class="job-company">VixTeam Consultoria e Sistemas</span>
-                <span class="job-date">2021 - 2026</span>
+                <span class="job-date" id="job2-date">2021 - 2026</span>
             </div>
             <ul>
-                <li>Developed robust desktop systems utilizing PowerBuilder, DataWindows, and PFC architecture.</li>
-                <li>Engineered backend solutions by creating Stored Procedures, Triggers, and Views in Sybase, Oracle, and SQL Server for high-volume data environments.</li>
-                <li>Conducted technical requirements analysis, system architecture with Domain-Driven Design (DDD), and complex data modeling.</li>
-                <li>Spearheaded modernization efforts by integrating PowerBuilder applications with C++ components.</li>
-                <li>Acted as Scrum Master to lead agile teams and managed CI/CD pipelines via Git/TFS in Azure DevOps.</li>
+                <li id="job2-li1">Developed robust desktop systems utilizing PowerBuilder, DataWindows, and PFC architecture.</li>
+                <li id="job2-li2">Engineered backend solutions by creating Stored Procedures, Triggers, and Views in Sybase, Oracle, and SQL Server for high-volume data environments.</li>
+                <li id="job2-li3">Conducted technical requirements analysis, system architecture with Domain-Driven Design (DDD), and complex data modeling.</li>
+                <li id="job2-li4">Spearheaded modernization efforts by integrating PowerBuilder applications with C++ components.</li>
+                <li id="job2-li5">Acted as Scrum Master to lead agile teams and managed CI/CD pipelines via Git/TFS in Azure DevOps.</li>
             </ul>
         </div>
         
         <div class="job">
             <div class="job-header">
-                <span class="job-title">Educational Instructor</span>
+                <span class="job-title" id="job3-title">Educational Instructor</span>
                 <span class="job-company">Cool Code</span>
                 <span class="job-date">2020 - 2022</span>
             </div>
             <ul>
-                <li>Taught robotics using Arduino and Microbit, alongside programming in C and block-based languages.</li>
+                <li id="job3-li1">Taught robotics using Arduino and Microbit, alongside programming in C and block-based languages.</li>
             </ul>
         </div>
     </section>
 
     <!-- Education Section -->
     <section class="card">
-        <h3>Education</h3>
+        <h3 id="edu-title">Education</h3>
         <div class="job">
             <div class="job-header">
-                <span class="job-title">B.S. Computer Engineering</span>
+                <span class="job-title" id="edu-degree">B.S. Computer Engineering</span>
                 <span class="job-company">Universidade Internacional (Uninter)</span>
-                <span class="job-date">2025 - Present</span>
+                <span class="job-date" id="edu-date">2025 - Present</span>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section class="card">
-        <h3>Tech Stack</h3>
+        <h3 id="skills-title">Tech Stack</h3>
         <div class="skills-grid">
             <div class="skill-tag highlight">PowerBuilder</div>
             <div class="skill-tag highlight">DataWindows / PFC</div>
@@ -284,14 +312,96 @@
 
     <!-- Contact Section -->
     <section class="card" style="background: var(--secondary); color: #fff;">
-        <h3 style="border-bottom-color: #fff;">Let's Connect</h3>
-        <p style="margin-bottom: 1.5rem; font-size: 1.2rem;">Currently based in Serra, ES, Brazil, and actively seeking remote or relocation opportunities in North America and Europe.</p>
+        <h3 id="contact-title" style="border-bottom-color: #fff;">Let's Connect</h3>
+        <p id="contact-desc" style="margin-bottom: 1.5rem; font-size: 1.2rem;">Currently based in Serra, ES, Brazil, and actively seeking remote or relocation opportunities in North America and Europe.</p>
         <div class="contact-links">
-            <a href="https://www.linkedin.com/in/gustavo-elizeta-010696204/" target="_blank" class="button">LinkedIn Profile</a>
-            <a href="mailto:gelizeta@gmail.com" class="button" style="background: var(--primary);">Email Me</a>
+            <a href="https://www.linkedin.com/in/gustavo-elizeta-010696204/" target="_blank" class="button" id="btn-linkedin">LinkedIn Profile</a>
+            <a href="mailto:gelizeta@gmail.com" class="button" style="background: var(--primary);" id="btn-email">Email Me</a>
         </div>
     </section>
 </div>
 
+<script>
+    let currentLang = 'en';
+
+    const content = {
+        en: {
+            "role-title": "Full-Stack Software Engineer",
+            "target-role": "Specializing in PowerBuilder & Legacy System Modernization | Open to Relocation (NA/EU)",
+            "about-title": "About Me",
+            "about-desc": "I am a highly skilled Systems Analyst and Full-Stack Developer with over 5 years of experience building, sustaining, and modernizing robust enterprise applications. My core expertise lies in <strong>PowerBuilder</strong>, complex database architecture (Oracle, Sybase, SQL Anywhere), and system integrations (C++, .NET). I am currently targeting international opportunities where I can leverage my deep knowledge of legacy systems and modern architectural patterns (DDD) to solve critical business challenges.",
+            "exp-title": "Experience",
+            "job1-title": "Systems Analyst - Mid-Level",
+            "job1-date": "2026 - Present",
+            "job1-li1": "Develop and maintain applications using PowerBuilder 2019 within the accounting domain.",
+            "job1-li2": "Ensure the maintenance, sustainability, and evolution of critical legacy systems.",
+            "job1-li3": "Design and implement cross-platform integrations between PowerBuilder and .NET environments.",
+            "job1-li4": "Manage databases using SQL Anywhere 16 and 17.",
+            "job1-li5": "Utilize Git for version control and Microsoft Azure for DevOps workflows.",
+            "job2-title": "Full-Stack Developer (PowerBuilder)",
+            "job2-date": "2021 - 2026",
+            "job2-li1": "Developed robust desktop systems utilizing PowerBuilder, DataWindows, and PFC architecture.",
+            "job2-li2": "Engineered backend solutions by creating Stored Procedures, Triggers, and Views in Sybase, Oracle, and SQL Server for high-volume data environments.",
+            "job2-li3": "Conducted technical requirements analysis, system architecture with Domain-Driven Design (DDD), and complex data modeling.",
+            "job2-li4": "Spearheaded modernization efforts by integrating PowerBuilder applications with C++ components.",
+            "job2-li5": "Acted as Scrum Master to lead agile teams and managed CI/CD pipelines via Git/TFS in Azure DevOps.",
+            "job3-title": "Educational Instructor",
+            "job3-li1": "Taught robotics using Arduino and Microbit, alongside programming in C and block-based languages.",
+            "edu-title": "Education",
+            "edu-degree": "B.S. Computer Engineering",
+            "edu-date": "2025 - Present",
+            "skills-title": "Tech Stack",
+            "contact-title": "Let's Connect",
+            "contact-desc": "Currently based in Serra, ES, Brazil, and actively seeking remote or relocation opportunities in North America and Europe.",
+            "btn-linkedin": "LinkedIn Profile",
+            "btn-email": "Email Me",
+            "btn-lang": "PT-BR"
+        },
+        pt: {
+            "role-title": "Analista de Sistemas / Desenvolvedor Full-Stack",
+            "target-role": "Especialista em PowerBuilder e Modernização de Sistemas Legados | Foco em Vagas Internacionais (América do Norte/Europa)",
+            "about-title": "Sobre Mim",
+            "about-desc": "Sou um Analista de Sistemas e Desenvolvedor Full-Stack com mais de 5 anos de experiência na criação, sustentação e modernização de aplicações corporativas robustas. Minha principal especialidade é em <strong>PowerBuilder</strong>, arquitetura complexa de banco de dados (Oracle, Sybase, SQL Anywhere) e integrações de sistemas (C++, .NET). Atualmente, busco oportunidades internacionais onde possa aplicar meu profundo conhecimento em sistemas legados e padrões arquiteturais modernos (DDD) para resolver desafios críticos de negócios.",
+            "exp-title": "Experiência Profissional",
+            "job1-title": "Analista de Sistemas - Nível Pleno",
+            "job1-date": "2026 - Presente",
+            "job1-li1": "Desenvolvimento PowerBuilder 2019 com foco no domínio contábil.",
+            "job1-li2": "Manutenção, sustentação e evolução de sistemas legados críticos.",
+            "job1-li3": "Desenho e implementação de integrações entre PowerBuilder e ambientes .NET.",
+            "job1-li4": "Gestão e manipulação de banco de dados SQL Anywhere 16 e 17.",
+            "job1-li5": "Versionamento de código utilizando Git e práticas DevOps com Microsoft Azure.",
+            "job2-title": "Analista e Desenvolvedor Full-Stack (PowerBuilder)",
+            "job2-date": "2021 - 2026",
+            "job2-li1": "Desenvolvimento PowerBuilder com DataWindows e PFC para evolução de sistemas desktop robustos.",
+            "job2-li2": "Criação de Stored Procedures, Triggers e Views em Sybase, Oracle e SQL Server para grandes volumes.",
+            "job2-li3": "Análise técnica de requisitos, arquitetura de sistemas com DDD e modelagem de dados.",
+            "job2-li4": "Integração de PowerBuilder com C++ visando modernização e automação de processos.",
+            "job2-li5": "Liderança como Scrum Master e gestão de versionamento via Git/TFS no Azure DevOps.",
+            "job3-title": "Orientador Educacional",
+            "job3-li1": "Ministração de aulas de Robótica com Arduino e Microbit, além de programação em C e blocos.",
+            "edu-title": "Formação",
+            "edu-degree": "Engenharia da Computação",
+            "edu-date": "2025 - Atualmente",
+            "skills-title": "Habilidades Técnicas",
+            "contact-title": "Vamos Conectar",
+            "contact-desc": "Atualmente residindo na Serra, ES, Brasil, buscando ativamente vagas remotas internacionais ou de realocação para a América do Norte e Europa.",
+            "btn-linkedin": "Perfil no LinkedIn",
+            "btn-email": "Enviar Email",
+            "btn-lang": "EN-US"
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'pt' : 'en';
+        const texts = content[currentLang];
+        
+        for (const [id, value] of Object.entries(texts)) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = value;
+            }
+        }
+    }
+</script>
 </body>
 </html>
