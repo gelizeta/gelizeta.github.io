@@ -1,2 +1,0 @@
-# gelizeta.github.io
-portifólio
